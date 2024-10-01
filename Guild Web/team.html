@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Night - Team</title>
+    <link rel="icon" type="image/png" href="Image/logo.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="Good Night Logo" width="100" height="100">
+            <h1><span>GOOD NIGHT</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="who-we-are.html">Who we are</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="stream.html">Stream</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="social-icons">
+                <a href="https://www.twitch.tv/sensationshc" target="_blank" class="icon twitch"><img src="Image/twitch.png" alt="Twitch"></a>
+                <a href="https://discord.gg/kw3B7B9D" target="_blank" class="icon discord"><img src="Image/discord.jpg" alt="Discord"></a>
+                <a href="https://www.youtube.com/channel/UCRWUuNpeO6OELMBDoGjG1JA" target="_blank" class="icon youtube"><img src="Image/youtube_icon.png" alt="YouTube"></a>
+                <a href="https://www.warcraftlogs.com/guild/us/malganis/gn" target="_blank" class="icon WCL"><img src="Image/WoW_icon.svg.png" alt="WCL"></a>
+            </div>
+            <div class="cta">
+                <a href="https://forms.gle/xqh4f8AohnYUcF1x9" class="button" target="_blank">Join Us</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="team">
+            <h2>Meet Our Good Night Team</h2>
+            <p>Meet our dedicated team members.</p>
+            <div class="team-member-container">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="Image/sensation.webp" alt="Team Member 1">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sensation</h3>
+                        <h4>Unyielding spirit, relentless gamer.</h4>
+                        <p>Introducing AJ, the Guild Leader of Good Night and the first man and main tank of every raid—often celebrated as the backbone of our team! Despite being in a wheelchair, his spirit and dedication know no bounds, maintaining a flawless attendance that motivates us all. Once a master tactician, now he's our main tank, a strategic genius navigating the front lines of battle. Who knows what fearless tactics he has ready for our next encounter!</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-member-container">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="Image/party.jpg" alt="Team Member 2">
+                    </div>
+                    <div class="member-info">
+                        <h3>Party</h3>
+                        <h4>Guiding Light</h4>
+                        <p>Introducing Party, A calm beacon in every storm, he leads the game with unwavering humor and wisdom. His quick wit not only lightens the mood but also brings clarity to complex situations, ensuring everyone knows their roles and strategies. His guidance is invaluable, as he effortlessly navigates challenges, always making sure the team moves together towards victory. Truly, he is the guiding light that shows us the way forward in every battle.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="discord-container">
+                <button id="toggle-discord" onclick="toggleDiscordWidget()">Hide Discord Widget</button>
+                <iframe src="https://discord.com/widget?id=383587456303366145&theme=dark" class="discord-widget" 
+                allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            </div>            
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 <span>Good Night</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for the DOM content to be fully loaded before executing the script
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current page's file name from the URL path
+            var path = window.location.pathname;
+            var page = path.split("/").pop();
+
+            // Select all anchor tags inside the navigation menu
+            var navLinks = document.querySelectorAll('nav ul li a');
+
+            // Loop through each navigation link
+            navLinks.forEach(function(link) {
+                // Check if the link's href attribute matches the current page
+                if (link.getAttribute('href') === page) {
+            // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add an event listener to the window object to detect scroll events
+        window.addEventListener('scroll', function() {
+            // Get the navbar element by its ID
+            var header = document.getElementById('navbar');
+            // Get the initial position of the navbar
+            var sticky = header.offsetTop;
+
+            // If the page is scrolled beyond the navbar's initial position
+            if (window.pageYOffset > sticky) {
+                // Add the 'sticky' class to the navbar
+                header.classList.add('sticky');
+            } else {
+                // Remove the 'sticky' class when scrolled back to the top
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Function to open the appointment popup by setting its display style to 'block'
+        function openPopup() {
+            document.getElementById('appointmentPopup').style.display = 'block';
+        }
+
+        // Function to close the appointment popup by setting its display style to 'none'
+        function closePopup() {
+            document.getElementById('appointmentPopup').style.display = 'none';
+        }
+
+        function toggleDiscordWidget() {
+            var widget = document.querySelector('.discord-widget');
+            var button = document.getElementById('toggle-discord');
+
+            if (widget.style.display === 'none') {
+                widget.style.display = 'block';
+                button.textContent = 'Hide Discord Widget';
+            } else {
+                widget.style.display = 'none';
+                button.textContent = 'Show Discord Widget';
+            }
+        }
+
+    </script>
+
+</body>
+</html>

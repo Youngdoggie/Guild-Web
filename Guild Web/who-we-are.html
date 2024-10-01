@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Night - Who We Are</title>
+    <link rel="icon" type="image/png" href="Image/logo.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="Good Night Logo" width="100" height="100">
+            <h1><span>GOOD NIGHT</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="who-we-are.html">Who we are</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="stream.html">Stream</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="social-icons">
+                <a href="https://www.twitch.tv/sensationshc" target="_blank" class="icon twitch"><img src="Image/twitch.png" alt="Twitch"></a>
+                <a href="https://discord.gg/kw3B7B9D" target="_blank" class="icon discord"><img src="Image/discord.jpg" alt="Discord"></a>
+                <a href="https://www.youtube.com/channel/UCRWUuNpeO6OELMBDoGjG1JA" target="_blank" class="icon youtube"><img src="Image/youtube_icon.png" alt="YouTube"></a>
+                <a href="https://www.warcraftlogs.com/guild/us/malganis/gn" target="_blank" class="icon WCL"><img src="Image/WoW_icon.svg.png" alt="WCL"></a>
+            </div>
+            <div class="cta">
+                <a href="https://forms.gle/xqh4f8AohnYUcF1x9" class="button" target="_blank">Join Us</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="who-we-are">
+            <div class="partners">
+                <img src="Image/Background.jpg" alt="Partners">
+            </div>
+            <h2>Who We Are</h2>
+            <p> gn is a Mythic focused raiding guild now located on Mal'Ganis 
+                coming from Burning Legion and raiding as a guild since MOP, consistently
+                as a top raiding guild. With consistent improvements across tiers, we have
+                proven that raiding numerous hours is not required to stay competitive or stable
+                regionally. However to sustain that competitive edge and stability, we are
+                always on the lookout for potential additions to the roster. We welcome
+                healthy competition and value activity/capability within a role as one
+                of the strongest aspects in a player.</p>
+            <p> raid Times:
+                We're on a four day progression schedule and we go down to 1-3 on farm. 
+                The first two weeks of Mythic we will add a Sunday. Invites 15 minutes early. 
+                On farm we will do 2 Mandatory runs, and a third optional run.</p>
+            <p> Expectations:
+                Applicants and raiders are expected to maintain close to 100% attendance during 
+                all progression content as we do not have an enormously large bench. It is also 
+                expected that applicants have a strong understanding of their class and it's 
+                various roles. It should be evident that you are putting forth maximum effort 
+                in both improving your characters effectiveness and your own performance both 
+                in and out of raid</p>
+            <p> Alt Requirement: 
+                We require one alt for heroic splits at the start of a tier 
+                and for more sales later into farm. We also do a fully optional third mythic 
+                run for those of us who are interested.</p>
+        </section>
+
+        <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div id="faqContainer"></div>
+</section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 <span>Good Night</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for the DOM content to be fully loaded before executing the script
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current page's file name from the URL path
+            var path = window.location.pathname;
+            var page = path.split("/").pop();
+
+            // Select all anchor tags inside the navigation menu
+            var navLinks = document.querySelectorAll('nav ul li a');
+
+            // Loop through each navigation link
+            navLinks.forEach(function(link) {
+                // Check if the link's href attribute matches the current page
+                if (link.getAttribute('href') === page) {
+            // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add an event listener to the window object to detect scroll events
+        window.addEventListener('scroll', function() {
+            // Get the navbar element by its ID
+            var header = document.getElementById('navbar');
+            // Get the initial position of the navbar
+            var sticky = header.offsetTop;
+
+            // If the page is scrolled beyond the navbar's initial position
+            if (window.pageYOffset > sticky) {
+                // Add the 'sticky' class to the navbar
+                header.classList.add('sticky');
+            } else {
+                // Remove the 'sticky' class when scrolled back to the top
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Function to open the appointment popup by setting its display style to 'block'
+        function openPopup() {
+            document.getElementById('appointmentPopup').style.display = 'block';
+        }
+
+        // Function to close the appointment popup by setting its display style to 'none'
+        function closePopup() {
+            document.getElementById('appointmentPopup').style.display = 'none';
+        }
+
+
+        // Class representing an FAQ item
+        class FAQItem {
+            constructor(question, answer) {
+                this.question = question;
+                this.answer = answer;
+            }
+        }
+
+        // Array to store FAQ items
+        const faqs = [
+            new FAQItem("Why us?", "We are a chill guild with a good atmosphere. We never argue about anything and are very friendly with newbies."),
+            new FAQItem("What happens next after apply?", "You will be scheduled for a meeting with at least three of our officers. During this meeting, we will assess your qualifications and offer you a trial session. Throughout the trial period, which will last about a month, we will provide weekly feedback. After the trial, we will decide whether to continue with your involvement."),
+            new FAQItem("What benefit do I get?","You and one of your friends will receive a raid sale discount. Additionally, you are promised the mount from the last boss by the end of this tier.")
+        ];
+
+        // Function to create FAQ HTML elements
+        function createFAQItem(faq) {
+            const faqElement = document.createElement('div');
+            faqElement.classList.add('faq-item');
+
+            const questionElement = document.createElement('h3');
+            questionElement.textContent = faq.question;
+            questionElement.classList.add('faq-question');
+            questionElement.addEventListener('click', function() {
+                answerElement.classList.toggle('hidden');
+            });
+
+            const answerElement = document.createElement('p');
+            answerElement.textContent = faq.answer;
+            answerElement.classList.add('faq-answer', 'hidden');
+
+            faqElement.appendChild(questionElement);
+            faqElement.appendChild(answerElement);
+
+            return faqElement;
+        }
+
+        // Render FAQs
+        document.addEventListener("DOMContentLoaded", function() {
+            const faqContainer = document.getElementById('faqContainer');
+            faqs.forEach(faq => {
+                const faqItem = createFAQItem(faq);
+                faqContainer.appendChild(faqItem);
+            });
+        });
+    </script>
+
+</body>
+</html>
